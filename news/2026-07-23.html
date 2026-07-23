@@ -1,0 +1,259 @@
+<title>造園ニュース ｜ みどり造園</title>
+<style>
+:root{
+  --bg:#f5f4ee;
+  --surface:#ffffff;
+  --surface-2:#eceee2;
+  --ink:#23281d;
+  --ink-dim:#5e6852;
+  --accent:#3c6b3f;
+  --accent-soft:#6f9a5c;
+  --accent-tint:#e7efe1;
+  --line:#dce0d0;
+  --warn:#b5652a;
+  --warn-tint:#f8e9dd;
+  --hot:#a33a2a;
+  --hot-tint:#f7e3de;
+  --shadow:0 1px 3px rgba(35,40,29,.08);
+  --cat-law:#7a5688;
+  --cat-pest:#a8593b;
+  --cat-money:#a8791f;
+  --cat-industry:#4f6b8a;
+  --cat-dx:#3c6b3f;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#14170f; --surface:#1b2015; --surface-2:#232a1b; --ink:#e9ecdf; --ink-dim:#a3ab93;
+    --accent:#7fb26a; --accent-soft:#5a8a4c; --accent-tint:#233022; --line:#333a28;
+    --warn:#e8a066; --warn-tint:#332720;
+    --hot:#e08a72; --hot-tint:#38221c;
+    --shadow:0 1px 3px rgba(0,0,0,.35);
+    --cat-law:#bb9bcb; --cat-pest:#d38763; --cat-money:#d9ac5c; --cat-industry:#8aa8cc; --cat-dx:#7fb26a;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#14170f; --surface:#1b2015; --surface-2:#232a1b; --ink:#e9ecdf; --ink-dim:#a3ab93;
+  --accent:#7fb26a; --accent-soft:#5a8a4c; --accent-tint:#233022; --line:#333a28;
+  --warn:#e8a066; --warn-tint:#332720;
+  --hot:#e08a72; --hot-tint:#38221c;
+  --shadow:0 1px 3px rgba(0,0,0,.35);
+  --cat-law:#bb9bcb; --cat-pest:#d38763; --cat-money:#d9ac5c; --cat-industry:#8aa8cc; --cat-dx:#7fb26a;
+}
+:root[data-theme="light"]{
+  --bg:#f5f4ee; --surface:#ffffff; --surface-2:#eceee2; --ink:#23281d; --ink-dim:#5e6852;
+  --accent:#3c6b3f; --accent-soft:#6f9a5c; --accent-tint:#e7efe1; --line:#dce0d0;
+  --warn:#b5652a; --warn-tint:#f8e9dd;
+  --hot:#a33a2a; --hot-tint:#f7e3de;
+  --shadow:0 1px 3px rgba(35,40,29,.08);
+  --cat-law:#7a5688; --cat-pest:#a8593b; --cat-money:#a8791f; --cat-industry:#4f6b8a; --cat-dx:#3c6b3f;
+}
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic Medium","Yu Gothic",-apple-system,BlinkMacSystemFont,sans-serif;
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+.mono{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-variant-numeric:tabular-nums;}
+.wrap{max-width:840px;margin:0 auto;padding:28px 20px 80px;}
+
+header.top{margin-bottom:24px;border-bottom:2px solid var(--accent);padding-bottom:16px;}
+.eyebrow{font-size:.72rem;letter-spacing:.16em;color:var(--accent-soft);font-weight:700;text-transform:uppercase;margin-bottom:6px;}
+h1{font-size:1.55rem;margin:0 0 4px;letter-spacing:.01em;text-wrap:balance;}
+.dateline{color:var(--ink-dim);font-size:.9rem;display:flex;gap:14px;flex-wrap:wrap;align-items:baseline;}
+.dateline .num{font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-variant-numeric:tabular-nums;}
+
+.lead{
+  background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--hot);
+  border-radius:14px;box-shadow:var(--shadow);
+  padding:22px 24px;margin-bottom:30px;
+}
+.lead .tag-row{margin-bottom:8px;}
+.lead h2{font-size:1.28rem;margin:0 0 10px;line-height:1.5;text-wrap:balance;}
+.lead p{margin:0 0 10px;font-size:.94rem;}
+.temp-strip{
+  display:flex;gap:10px;flex-wrap:wrap;margin:14px 0;
+}
+.temp{
+  background:var(--hot-tint);border-radius:10px;padding:10px 16px;min-width:118px;
+}
+.temp .v{font-size:1.45rem;font-weight:700;color:var(--hot);font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-variant-numeric:tabular-nums;line-height:1.2;}
+.temp .l{font-size:.76rem;color:var(--ink-dim);}
+.temp.home{outline:2px solid var(--hot);}
+.temp.home .l{font-weight:700;color:var(--hot);}
+
+.tag{
+  display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.08em;
+  padding:2px 10px;border-radius:999px;color:#fff;vertical-align:middle;
+}
+.tag.hot{background:var(--hot);}
+.tag.law{background:var(--cat-law);}
+.tag.pest{background:var(--cat-pest);}
+.tag.money{background:var(--cat-money);}
+.tag.industry{background:var(--cat-industry);}
+.tag.dx{background:var(--cat-dx);}
+
+section.cat{margin-bottom:30px;}
+section.cat > h2{
+  font-size:1.02rem;margin:0 0 4px;display:flex;align-items:center;gap:10px;
+  padding-bottom:8px;border-bottom:1px solid var(--line);
+}
+.cat-note{font-size:.82rem;color:var(--ink-dim);margin:6px 0 12px;}
+
+article.item{
+  background:var(--surface);border:1px solid var(--line);border-radius:12px;
+  box-shadow:var(--shadow);padding:16px 20px;margin-bottom:12px;
+}
+article.item h3{font-size:.98rem;margin:0 0 6px;line-height:1.55;}
+article.item h3 a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--accent-soft);}
+article.item h3 a:hover,article.item h3 a:focus-visible{color:var(--accent);border-bottom-width:2px;}
+article.item h3 a:focus-visible{outline:2px solid var(--accent-soft);outline-offset:2px;border-radius:2px;}
+article.item p{margin:0 0 8px;font-size:.88rem;color:var(--ink);}
+.src{font-size:.76rem;color:var(--ink-dim);}
+.src a{color:var(--ink-dim);}
+.impact{
+  background:var(--accent-tint);border-radius:8px;padding:8px 12px;margin-top:10px;
+  font-size:.84rem;
+}
+.impact b{color:var(--accent);font-size:.78rem;letter-spacing:.06em;display:block;margin-bottom:2px;}
+.impact.alert{background:var(--warn-tint);}
+.impact.alert b{color:var(--warn);}
+
+footer{margin-top:40px;color:var(--ink-dim);font-size:.78rem;text-align:center;border-top:1px solid var(--line);padding-top:16px;}
+footer p{margin:4px 0;}
+</style>
+
+<div class="wrap">
+
+ <header class="top">
+  <div class="eyebrow">MIDORI ZOEN ｜ GREEN INDUSTRY DIGEST</div>
+  <h1>造園ニュース</h1>
+  <div class="dateline">
+   <span><span class="num">2026年7月23日（木）</span>発行</span>
+   <span>収録 <span class="num">10</span> 本 ｜ 豊田・愛知の話題を優先</span>
+  </div>
+ </header>
+
+ <article class="lead">
+  <div class="tag-row"><span class="tag hot">今週のトップ</span></div>
+  <h2>7月21日、豊田市で40.1℃ — 全国初の「酷暑日」を地元で記録</h2>
+  <p>7月21日、岐阜県多治見市で40.3℃、<b>愛知県豊田市で40.1℃</b>、岐阜県郡上市八幡で40.0℃を観測。気象庁の3か月予報でも7〜8月は全国的に平年より高温の見込みで、熱中症危険度は7〜9月を通して「厳重警戒」ランクが続くとされています。</p>
+  <div class="temp-strip">
+   <div class="temp"><div class="v">40.3℃</div><div class="l">多治見市（岐阜）</div></div>
+   <div class="temp home"><div class="v">40.1℃</div><div class="l">豊田市 ★地元</div></div>
+   <div class="temp"><div class="v">40.0℃</div><div class="l">郡上市八幡（岐阜）</div></div>
+  </div>
+  <div class="impact alert">
+   <b>現場への影響</b>
+   まさに普段の現場エリアが全国最高レベルの暑さです。WBGT28℃以上／気温31℃以上の日は熱中症対策の体制・手順・周知が法律上の義務（下の法令欄参照）。朝夕への作業時間シフト、空調服バッテリーの予備、休憩・水分の声かけ役の指名まで決めておくのが確実です。
+  </div>
+  <div class="src">出典：<a href="https://bousai-base.com/kokusyobi2026/">防災ベーシック（7/21の記録）</a> ／ <a href="https://tenki.jp/forecaster/s_ono/2026/06/23/39435.html">tenki.jp 3か月予報</a> ／ <a href="https://tenki.jp/forecaster/domoto_yukiyo/2026/07/04/39594.html">tenki.jp 猛暑警戒</a></div>
+ </article>
+
+ <section class="cat">
+  <h2><span class="tag law">制度・法令</span>現場の義務と規制の動き</h2>
+
+  <article class="item">
+   <h3><a href="https://sakumiru.jp/column/nettyushou-taisaku-kensetsu">熱中症対策の義務化から1年 — 2026年3月に新ガイドライン、罰則新設の議論も</a></h3>
+   <p>2025年6月の法改正で、WBGT28℃以上・気温31℃以上等の現場では対策の体制・手順・周知が義務化済み。2026年3月には「職場における熱中症防止のためのガイドライン」が新たに策定され、4月の労働安全衛生法改正で保護対象が<b>個人事業主（一人親方）にも拡大</b>されました。作業中断基準の法令化や罰則新設も議論段階に入っています。なお建設業の熱中症死亡者は直近5年累計48人で全業種最多です。</p>
+   <div class="impact">
+    <b>みどり造園への影響</b>
+    下請けさん・応援の職人さんも保護対象になった点が重要です。自社社員だけでなく、常用で来てもらう方も含めた対応手順（誰が中断を判断するか）を1枚にまとめておくと、元請への提出書類にもそのまま使えます。
+   </div>
+   <div class="src">出典：<a href="https://sakumiru.jp/column/nettyushou-taisaku-kensetsu">サクミル</a> ／ <a href="https://lline-group.co.jp/magazine/latest-heatstroke-prevention-measures/">Grid（チェックリスト無料DL）</a> ／ <a href="https://www.cic-ct.co.jp/column/roudonettyusho-column/roudonettyusho-column-column07">CIC日本建設情報センター</a></div>
+  </article>
+
+  <article class="item">
+   <h3><a href="https://www.mlit.go.jp/sogoseisaku/environment/sosei_environment_tk_000017.html">国交省「グリーンインフラ推進戦略2030」公表 — 民間資金を呼び込むガイドラインも</a></h3>
+   <p>2026年1月に国交省が「グリーンインフラ推進戦略2030」を公表。「グリーンインフラの活用が当たり前の社会」を掲げ、3月には民間投資を促す「ファイナンスガイドライン（中間とりまとめ）」も出ました。緑地整備が防災・脱炭素の政策メニューに正式に組み込まれていく流れです。</p>
+   <div class="impact">
+    <b>みどり造園への影響</b>
+    公共の緑化・雨水浸透・法面緑化系の発注が中期的に増える方向のシグナルです。メモにあった「豊田市での力をつけ市の仕事をする」路線とも合致します。入札情報の自動収集を仕組み化するなら、この分野のキーワードを入れておく価値があります。
+   </div>
+   <div class="src">出典：<a href="https://www.ey.com/ja_jp/insights/government-public-sector/mlit-finance-guidelines-green-infrastructure">EY Japan 解説</a> ／ <a href="https://www.mlit.go.jp/report/press/content/001978316.pdf">国交省 参考資料（PDF）</a></div>
+  </article>
+ </section>
+
+ <section class="cat">
+  <h2><span class="tag pest">病害虫</span>樹木の被害情報</h2>
+
+  <article class="item">
+   <h3><a href="https://www.pref.aichi.jp/soshiki/shizen/kubiaka202003.html">クビアカツヤカミキリ、豊田市を含む県内16市町村でサクラ被害 — 決定打なし</a></h3>
+   <p>2026年6月時点で名古屋市・春日井市・<b>豊田市</b>・小牧市など県内16市町村の街路樹サクラを中心に被害が発生。モモ・ウメなどバラ科にも広がっています。幼虫は約2年かけて材内を食害し枯死に至らせ、いまだ決定的な防除法は確立されていません。環境省も新宿御苑で対策を公表するなど全国区の問題になっています。</p>
+   <div class="impact">
+    <b>みどり造園への影響</b>
+    剪定・管理現場でサクラ類の根元に「ひき肉状のフラス（木くず＋糞）」を見つけたら本種のサインです。発見時は市への通報対象。管理物件のサクラの点検をメニュー化すれば、公園・街路樹案件の提案材料にもなります。
+   </div>
+   <div class="src">出典：<a href="https://www.pref.aichi.jp/soshiki/shizen/kubiaka202003.html">愛知県</a> ／ <a href="https://fng.or.jp/shinjuku/2026/06/18/20260618_01/">環境省・新宿御苑（6/18）</a> ／ <a href="https://agri.mynavi.jp/2026_03_27_476008/">マイナビ農業（防除剤の現在地）</a></div>
+  </article>
+ </section>
+
+ <section class="cat">
+  <h2><span class="tag money">補助金・助成金</span>使えるお金の情報</h2>
+
+  <article class="item">
+   <h3><a href="https://www.city.nagoya.jp/jigyou/douro/1026345/1026346.html">名古屋市「みどりの補助金」2026年度受付中 — 民有地の緑化工事に助成</a></h3>
+   <p>「あいち森と緑づくり税」を財源に、市民が行う民有地の緑化工事へ助成する名古屋市の事業。2026年度（令和8年度）の申請受付が行われています。</p>
+   <div class="impact">
+    <b>みどり造園への影響</b>
+    名古屋市内の見積案件（守山区の高木案件など）では「補助金を使えば実質負担が下がります」という提案が武器になります。見積書に補助金活用欄を添えるだけで成約率に効く可能性があります。
+   </div>
+   <div class="src">出典：<a href="https://www.city.nagoya.jp/jigyou/douro/1026345/1026346.html">名古屋市公式</a> ／ <a href="https://www.pref.aichi.jp/life/sub/2/">愛知県 助成金一覧</a></div>
+  </article>
+
+  <article class="item">
+   <h3><a href="https://biz.stayway.jp/hojyo_detail/34400/">愛知県「木の香る都市づくり事業」— 木質化に上限300万円・補助率50％</a></h3>
+   <p>県産木材のPR効果が高い民間建築物等を対象に、木造化・内装木質化・木製備品導入の経費を支援。上限300万円、補助率50％です。</p>
+   <div class="impact">
+    <b>みどり造園への影響</b>
+    ウッドデッキ・木塀・パーゴラなど外構の木質化提案と組み合わせられる可能性があります。庭造成の大型案件（170万円クラス）で県産材を使う設計にできれば、施主の負担を下げられます。
+   </div>
+   <div class="src">出典：<a href="https://biz.stayway.jp/hojyo_detail/34400/">補助金クラウドMag.</a> ／ <a href="https://financeinjapan.com/finance/08820173-cf74-4188-b78e-83e400e3ee77">補助金コネクト</a></div>
+  </article>
+ </section>
+
+ <section class="cat">
+  <h2><span class="tag industry">業界動向</span>市場と経営</h2>
+
+  <article class="item">
+   <h3><a href="https://www.fujisan.co.jp/product/1281680590/new/">グリーン情報7月号の特集は「今植木業界が熱い！全国の若手生産者を巡る」</a></h3>
+   <p>業界誌グリーン情報の2026年7月号は、全国の若手植木生産者の取り組みを巡る特集。世界の造園・ガーデニングサービス市場の調査でも、自律型・データ駆動型の管理技術や「屋外ウェルネス空間」需要の拡大が成長要因として挙げられています。</p>
+   <div class="impact">
+    <b>みどり造園への影響</b>
+    若手生産者との直接のつながりは仕入れルートの多様化につながります。はなもも・ハナミズキなど植栽案件の材料調達の参考に。
+   </div>
+   <div class="src">出典：<a href="https://www.fujisan.co.jp/product/1281680590/new/">Fujisan.co.jp</a> ／ <a href="https://www.gii.co.jp/report/infi2030555-global-landscaping-gardening-services-market.html">世界市場レポート</a></div>
+  </article>
+
+  <article class="item">
+   <h3><a href="https://mabp.co.jp/magazine/27767/">後継者不在の造園業でM&Aが「廃業」より選ばれる流れが加速</a></h3>
+   <p>少子高齢化による後継者不在で、造園業・外構工事業のM&A（事業承継型の売却・買収）が増加。廃業ではなく次世代へ事業を繋ぐ選択肢として定着しつつあります。</p>
+   <div class="impact">
+    <b>みどり造園への影響</b>
+    裏を返せば、近隣の同業さんが仕事ごと手放すケースが増えるということ。付き合いのある同業さんの動向は、案件・人材・機材の引き継ぎチャンスになり得ます。
+   </div>
+   <div class="src">出典：<a href="https://mabp.co.jp/magazine/27767/">M&Aベストパートナーズ</a> ／ <a href="https://masouken.com/%E9%80%A0%E5%9C%92%E5%B7%A5%E4%BA%8B%E6%A5%AD%E7%95%8C%E3%81%AEM&A%E5%8B%95%E5%90%91">M&A総研</a></div>
+  </article>
+ </section>
+
+ <section class="cat">
+  <h2><span class="tag dx">DX・AI</span>効率化のヒント</h2>
+
+  <article class="item">
+   <h3><a href="https://onetech.jp/ConTechBlog/what-is-construction-dx-successful-examples-of-ai-use-25093">2026年、建設DXは「現場でAIが動く」段階へ — 自律型AIエージェントが本格化</a></h3>
+   <p>建設業界では人手不足・長時間労働・生産性低下への対応として、AI・ドローン・BIMを組み合わせる動きが加速。2026年はAI活用がデジタル領域から現実の業務現場へ拡大し、自律的にタスクをこなすAIエージェントへ進化する年とされています。一方、中小企業の6割はまだAIを業務で使えておらず、「補助金×小さな実証」が最初の一歩として推奨されています。</p>
+   <div class="impact">
+    <b>みどり造園への影響</b>
+    ColorNoteのメモにあった「日報から原価へ直接」「写真の自動振り分け→提出書類」「入札情報の自動収集」は、まさにこの流れのど真ん中です。人材開発支援助成金（小森先生に相談中のAI研修）と組み合わせれば、費用を抑えて着手できます。どれか1つ選んでいただければ、この環境で実際に作り始められます。
+   </div>
+   <div class="src">出典：<a href="https://onetech.jp/ConTechBlog/what-is-construction-dx-successful-examples-of-ai-use-25093">ONETECH</a> ／ <a href="https://note.com/datacrew/n/nb06686eb6e9e">DataCrew</a> ／ <a href="https://sponto.co.jp/insights/dx-ai-strategy-2026">sponto</a></div>
+  </article>
+ </section>
+
+ <footer>
+  <p>2026年7月23日（木）発行 ｜ みどり造園 向け業界ダイジェスト</p>
+  <p>※ 各記事は公開Web情報の要約です。補助金・法令は申請前に必ず一次情報（リンク先）をご確認ください。</p>
+ </footer>
+</div>
